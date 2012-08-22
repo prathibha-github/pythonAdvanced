@@ -2,3 +2,8 @@
 *.pot
 *.pyc
 local_settings.py
+venv
+.project
+.pydevproject
+.gitignore
+postgres_passwd.txt
