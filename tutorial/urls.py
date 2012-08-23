@@ -4,6 +4,7 @@ from polls.views import index
 from polls.views import detail
 from polls.views import results
 from polls.views import vote
+from django.contrib.auth.views import logout
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -24,4 +25,7 @@ urlpatterns = patterns('',
      url(r'^polls/(?P<poll_id>\d+)/$',detail),
      url(r'^polls/(?P<poll_id>\d+)/vote/$',vote),
      url(r'^polls/(?P<poll_id>\d+)/results/$',results),
+     
+     url(r'', include('social_auth.urls')),
+     url(r'^polls/logout/$',logout)
 )

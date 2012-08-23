@@ -1,4 +1,7 @@
 # Django settings for tutorial project.
+import os
+
+PWD = os.getenv('PWD','/app')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -67,7 +70,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/student/workspace/pythonAdvanced/static',
+    os.path.join(PWD, 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -107,7 +110,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/home/student/workspace/pythonAdvanced/mytemplates"
+    os.path.join(PWD, 'mytemplates'),
 )
 
 INSTALLED_APPS = (
@@ -122,6 +125,7 @@ INSTALLED_APPS = (
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'django_bcrypt',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -152,3 +156,24 @@ LOGGING = {
         },
     }
 }
+
+
+#===============================================================================
+# django-social-auth
+#===============================================================================
+
+INSTALLED_APPS += ('social_auth',)
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.google.GoogleOAuthBackend',
+    'social_auth.backends.google.GoogleOAuth2Backend',
+    'social_auth.backends.google.GoogleBackend',
+    'django.contrib.auth.backends.ModelBackend',)
+
+LOGIN_URL          = '/polls/'
+LOGIN_REDIRECT_URL = '/polls/'
+LOGIN_ERROR_URL    = '/polls/'
+
+GOOGLE_OAUTH2_CLIENT_ID = '635146380975-iua02nkb6ddhrg2qggucehc29n17lon6.apps.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET = 'Xa2X1Tye1TLlwFckSOAYc19o'
+#FACEBOOK_APP_ID = '404666972928357'
+#FACEBOOK_API_SECRET = '01abbd9a7071004258b81dab8926a401'

@@ -1,3 +1,4 @@
+{%load url from future %}
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -40,6 +41,13 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="/polls/">Polls Corp</a>
+          
+          	{% if user.is_authenticated %}
+          	you are logged in as {{user}}
+          	<a href="/polls/logout">Logout</a>
+          	{% else %}
+          	<a href="{% url "socialauth_begin" "google-oauth2" %}">Login with Google!</a>
+          	{%endif%}
           <div class="nav-collapse collapse">f
             <ul class="nav">
               <li class="active"><a href="/polls/">Home</a></li>
