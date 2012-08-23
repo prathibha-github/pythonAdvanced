@@ -1,2 +1,1 @@
-pythonAdvanced
-==============
+A very simple polls application created while learning django.
