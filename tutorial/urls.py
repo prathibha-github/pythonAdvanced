@@ -1,5 +1,10 @@
 from django.conf.urls import patterns, include, url
 
+from polls.views import index
+from polls.views import detail
+from polls.views import results
+from polls.views import vote
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -14,4 +19,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
      url(r'^admin/', include(admin.site.urls)),
+     
+     url(r'^polls/$',index),
+     url(r'^polls/(?P<poll_id>\d+)/$',detail),
+     url(r'^polls/(?P<poll_id>\d+)/vote/$',vote),
+     url(r'^polls/(?P<poll_id>\d+)/results/$',results),
 )

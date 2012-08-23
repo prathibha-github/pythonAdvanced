@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+Rendering my index page here:
+
+{% if latest_poll_list %}
+<ul>
+	{% for poll in latest_poll_list %}
+		<li>
+			<a href="/polls/{{ poll.id }}">{{ poll.question }}</a>
+		</li>
+	{% endfor %}
+</ul>
+{% else %}
+	<p> No polls running currently! </p>
+{% endif %}
+
+{% endblock %}

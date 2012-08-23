@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Rendering my detail page here:<br>
+
+<form action="/polls/{{poll.id}}/results/" method="POST">
+{% csrf_token %}
+{% if poll %}
+   Question: {{ poll.question }} <br>
+   Pub date: {{ poll.pub_date }}
+   {% for c in poll.choice_set.all %}
+   <input type="radio" name="choice" id="c{{forloop.counter}}" value="{{c.pk}}"/><label>{{c.choice_text}}</label>
+   
+   {%endfor%}
+{% endif %}
+</p>
+<input type="submit" value="vote"/>
+</form>
+{% endblock %}

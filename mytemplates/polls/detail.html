@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Rendering my detail page here:<br>
+
+{% if poll %}
+   Poll Detail: <br>
+   Question: <a href="/polls/{{poll.id}}/vote">{{ poll.question }} </a><br>
+   Pub date: {{ poll.pub_date }}
+{% else %}
+   Could not obtain poll detail!
+{% endif %}
+</p>
+
+{% endblock %}
